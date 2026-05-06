@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIAYN | Love Is All You Need</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* 기본 스타일 및 색상 정의 */
+        :root {
+            --primary-color: #f8f9fa;
+            /* 미니멀 화이트 배경 */
+            --accent-color: #ff8e71;
+            /* 따스한 코랄/오렌지 포인트 */
+            --text-main: #333;
+            --text-sub: #666;
+            --bg-warm: #fffaf0;
+            /* 약간 따뜻한 배경색 */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans KR', sans-serif;
+            color: var(--text-main);
+            line-height: 1.6;
+            background-color: var(--primary-color);
+        }
+
+        /* 네비게이션 */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            box-sizing: border-box;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            letter-spacing: -1px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            margin-left: 2rem;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* 섹션 공통 */
+        section {
+            padding: 100px 10%;
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .section-title span {
+            display: block;
+            font-size: 1rem;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* 히어로 섹션 */
+        #home {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #fff 0%, #fffaf0 100%);
+        }
+
+        #home h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+        }
+
+        #home p {
+            font-size: 1.2rem;
+            color: var(--text-sub);
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            background: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 142, 113, 0.3);
+        }
+
+        /* 서비스 소개 */
+        #about {
+            background: white;
+        }
+
+        .award-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .award-item {
+            background: var(--bg-warm);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid #ffe4b5;
+        }
+
+        .content-box {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        /* 활동 내용 카드 */
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--primary-color);
+            padding: 40px;
+            border-radius: 20px;
+            transition: 0.3s;
+            border: 1px solid #eee;
+        }
+
+        .card:hover {
+            background: white;
+            border-color: var(--accent-color);
+            transform: translateY(-10px);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--accent-color);
+        }
+
+        /* 연락처 */
+        #contact {
+            background: var(--text-main);
+            color: white;
+            text-align: center;
+        }
+
+        #contact .section-title {
+            color: white;
+        }
+
+        .email-link {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 5px;
+        }
+
+        /* 푸터 */
+        footer {
+            padding: 50px 10%;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #999;
+            border-top: 1px solid #eee;
+        }
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            #home h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">LIAYN</div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#activity">Activity</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <section id="home">
+        <h1>Love Is All You Need</h1>
+        <p>AI 기술로 세대 간의 벽을 허물고, <br>시간을 뛰어넘는 사랑을 연결합니다.</p>
+        <a href="#about" class="btn">우리의 이야기 보기</a>
+    </section>
+
+    <section id="about">
+        <div class="section-title">
+            <span>Since 2023. 04</span>
+            AI 기반 자원봉사단, 리아인
+        </div>
+
+        <ul class="award-list">
+            <li class="award-item">🏆 LG전자 3년 연속 우수봉사단 (2023-2025)</li>
+            <li class="award-item">🏅 행안부장관상 수상 (2025)</li>
+            <li class="award-item">⭐ K-자원봉사단리더 선정 (2026)</li>
+        </ul>
+
+        <div class="content-box">
+            <p>
+                우리는 급격한 기술 발전 속에서 소외된 어르신들의 <span class="highlight">디지털 소외감</span>에 주목합니다.
+                리아인은 단순한 기술 교육을 넘어, 휴머니즘 관점에서 생성형 AI를 활용해
+                세대 간의 단절을 해결하는 새로운 접근을 시도합니다.
+            </p>
+            <p>
+                <span class="highlight">'AI 휴머니즘'</span>을 통해 어르신들의 빛나는 시절을 복원하고,
+                MZ세대와의 진정한 사회적 연결을 회복하는 것이 리아인의 목적입니다.
+            </p>
+        </div>
+    </section>
+
+    <section id="activity" style="background-color: #fffaf0;">
+        <div class="section-title"><span>PROJECT</span>주요 활동 내용</div>
+        <div class="activity-grid">
+            <div class="card">
+                <h3>01. 추억 콘텐츠</h3>
+                <p>생성형 AI로 복원한 어르신의 과거와 현재를 MZ세대가 즐길 수 있는 숏폼 및 스토리 콘텐츠로 제작합니다. (월 4건 이상)</p>
+            </div>
+            <div class="card">
+                <h3>02. 자발적 공감</h3>
+                <p>SNS 해시태그 캠페인을 통해 세대 간 공감을 유도하고 월 100건 이상의 응원 참여를 이끌어냅니다.</p>
+            </div>
+            <div class="card">
+                <h3>03. 오프라인 전달</h3>
+                <p>온라인에 모인 MZ세대의 따뜻한 댓글을 모아 어르신께 직접 전달하여 실질적인 정서적 치유를 돕습니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-title">함께 세상을 바꾸고 싶다면</div>
+        <p style="margin-bottom: 2rem; opacity: 0.8;">비즈니스 문의 및 협업 제안은 아래 메일로 연락주세요.</p>
+        <a href="mailto:laplacian.ai@gmail.com" class="email-link">laplacian.ai@gmail.com</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 LIAYN. All Rights Reserved. <br> Love Is All You Need - Bridging the Gap with AI Humanism.</p>
+    </footer>
+
+</body>
+
+</html>
