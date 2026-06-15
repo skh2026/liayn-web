@@ -129,14 +129,24 @@
         /* 6. 회사 소개 & 수상 내역 */
         #about { background: white; }
 
+        /* [수정] 텍스트 리스트와 이미지 갤러리의 전체 너비를 똑같이 맞추기 위한 컨테이너 */
+        .award-container {
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem; /* 텍스트 목록과 이미지 갤러리 사이의 간격 */
+        }
+
         .award-list {
             list-style: none;
             padding: 0;
+            margin: 0;
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 0.8rem;
-            margin-bottom: 2.5rem;
+            width: 100%;
         }
 
         .award-item {
@@ -145,36 +155,32 @@
             border-radius: 20px;
             font-size: 0.9rem;
             border: 1px solid #ffe4b5;
+            white-space: nowrap; /* 글자 줄바꿈 방지 */
         }
 
-        /* 이미지 갤러리 (5장 최적화) */
+        /* [수정] 이미지 갤러리 전체 넓이를 상단 텍스트 칩들과 동기화 */
         .award-gallery {
             display: flex;
             justify-content: center;
-            align-items: center; /* Center vertically if aspects differ slightly */
-            gap: 1rem;            /* Reduced gap to match smaller images */
-            flex-wrap: wrap;      /* Wraps nicely on small screens */
-            margin-bottom: 3rem;  /* Clear spacing before the content box */
-            max-width: 900px;     /* Prevents the row from getting too wide on huge monitors */
-            margin-left: auto;
-            margin-right: auto;
+            align-items: center;
+            gap: 1.5rem; /* 절반 크기 이미지들이 균형을 잡도록 자간 조정 */
+            flex-wrap: wrap;
+            width: 100%;
         }
 
         .award-gallery img {
             display: block;
             width: 100%;
-            /* Optimized for 5 images at half-size (previous max was 180px) */
-            max-width: 90px;     
+            max-width: 95px; /* 절반 크기(90~100px) 유지 */
             height: auto;
-            border-radius: 8px;   /* Slightly sharper radius for smaller size */
-            box-shadow: 0 3px 10px rgba(0,0,0,0.06); /* Softer shadow for smaller element */
-            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06);
             transition: transform 0.3s ease;
             background-color: #fff;
         }
 
         .award-gallery img:hover {
-            transform: translateY(-4px); /* Subtler hover effect matching the new size */
+            transform: translateY(-4px);
         }
 
         .content-box {
@@ -247,15 +253,17 @@
         }
 
         /* 10. 반응형 디자인 */
-        @media (max-width: 1024px) {
-            .award-gallery img { max-width: 150px; }
-        }
-
         @media (max-width: 768px) {
             #home h1 { font-size: 2.5rem; }
             .nav-links { display: none; }
             section { padding: 80px 5%; }
-            .award-gallery img { max-width: 45%; } /* 모바일에서는 2개씩 배치 */
+            .award-container { gap: 1.5rem; }
+            .award-gallery { gap: 0.8rem; }
+            .award-gallery img { max-width: 75px; } /* 모바일에서는 조금 더 작게 조절하여 한 줄 유지 원활하게 */
+        }
+
+        @media (max-width: 480px) {
+            .award-gallery img { max-width: 18%; } /* 아주 작은 화면 대응 */
         }
     </style>
 </head>
@@ -287,18 +295,20 @@
             AI 기반 자원봉사단, 리아인
         </div>
 
-        <ul class="award-list">
-            <li class="award-item">🏆 LG전자 3년 연속 우수봉사단 (2023-2025)</li>
-            <li class="award-item">🏅 행안부장관상 수상 (2025)</li>
-            <li class="award-item">⭐ K-자원봉사단리더 선정 (2026)</li>
-        </ul>
+        <div class="award-container">
+            <ul class="award-list">
+                <li class="award-item">🏆 LG전자 3년 연속 우수봉사단 (2023-2025)</li>
+                <li class="award-item">🏅 행안부장관상 수상 (2025)</li>
+                <li class="award-item">⭐ K-자원봉사단리더 선정 (2026)</li>
+            </ul>
 
-        <div class="award-gallery">
-            <img src="images/award1.png" alt="LG전자 우수봉사단 2023">
-            <img src="images/award2.png" alt="LG전자 우수봉사단 2024">
-            <img src="images/award3.png" alt="LG전자 우수봉사단 2025">
-            <img src="images/award4.png" alt="행안부장관상 수상">
-            <img src="images/award5.png" alt="K-자원봉사단리더">
+            <div class="award-gallery">
+                <img src="images/award1.png" alt="LG전자 우수봉사단 2023">
+                <img src="images/award2.png" alt="LG전자 우수봉사단 2024">
+                <img src="images/award3.png" alt="LG전자 우수봉사단 2025">
+                <img src="images/award4.png" alt="행안부장관상 수상">
+                <img src="images/award5.png" alt="K-자원봉사단리더">
+            </div>
         </div>
 
         <div class="content-box">
