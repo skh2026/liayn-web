@@ -5,24 +5,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LIAYN | Love Is All You Need</title>
+    
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JJGJZZN1V6"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-JJGJZZN1V6');
     </script>
+
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* 기본 스타일 및 색상 정의 */
+        /* 1. 디자인 시스템 정의 */
         :root {
-            --primary-color: #f8f9fa; /* 미니멀 화이트 배경 */
-            --accent-color: #ff8e71;  /* 따스한 코랄/오렌지 포인트 */
+            --primary-color: #f8f9fa; /* 미니멀 화이트 */
+            --accent-color: #ff8e71;  /* 따스한 코랄 포인트 */
             --text-main: #333;
             --text-sub: #666;
-            --bg-warm: #fffaf0;       /* 약간 따뜻한 배경색 */
+            --bg-warm: #fffaf0;       /* 연한 아이보리 배경 */
         }
+
+        /* 2. 기본 레이아웃 */
+        * { box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; } /* 부드러운 스크롤 */
 
         body {
             margin: 0;
@@ -33,7 +40,7 @@
             background-color: var(--primary-color);
         }
 
-        /* 네비게이션 */
+        /* 3. 네비게이션 */
         nav {
             position: fixed;
             top: 0;
@@ -45,7 +52,6 @@
             justify-content: space-between;
             align-items: center;
             padding: 1rem 5%;
-            box-sizing: border-box;
             border-bottom: 1px solid #eee;
         }
 
@@ -64,15 +70,10 @@
             transition: 0.3s;
         }
 
-        .nav-links a:hover {
-            color: var(--accent-color);
-        }
+        .nav-links a:hover { color: var(--accent-color); }
 
-        /* 섹션 공통 */
-        section {
-            padding: 100px 10%;
-            overflow: hidden;
-        }
+        /* 4. 섹션 공통 스타일 */
+        section { padding: 100px 10%; }
 
         .section-title {
             font-size: 2rem;
@@ -87,7 +88,7 @@
             margin-bottom: 0.5rem;
         }
 
-        /* 히어로 섹션 */
+        /* 5. 히어로 섹션 */
         #home {
             height: 100vh;
             display: flex;
@@ -100,7 +101,7 @@
 
         #home h1 {
             font-size: 3.5rem;
-            margin-bottom: 1rem;
+            margin: 0 0 1rem 0;
             letter-spacing: -2px;
         }
 
@@ -125,10 +126,8 @@
             box-shadow: 0 10px 20px rgba(255, 142, 113, 0.3);
         }
 
-        /* 서비스 소개 */
-        #about {
-            background: white;
-        }
+        /* 6. 회사 소개 & 수상 내역 */
+        #about { background: white; }
 
         .award-list {
             list-style: none;
@@ -136,8 +135,8 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem; /* 이미지와의 간격을 위해 조절 */
+            gap: 0.8rem;
+            margin-bottom: 2.5rem;
         }
 
         .award-item {
@@ -148,28 +147,28 @@
             border: 1px solid #ffe4b5;
         }
 
-        /* 신규 추가: 수상 내역 이미지 레이아웃 스타일 */
+        /* 이미지 갤러리 (5장 최적화) */
         .award-gallery {
             display: flex;
             justify-content: center;
-            align-items: center;
-            gap: 1.5rem;
+            align-items: stretch;
+            gap: 15px;
             flex-wrap: wrap;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .award-gallery img {
             width: 100%;
-            max-width: 250px; /* 이미지 최대 가로 크기 지정 */
+            max-width: 180px; /* 한 줄에 5장 배치를 위해 너비 조정 */
             height: auto;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* 부드러운 그림자 효과 */
-            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
             transition: transform 0.3s ease;
+            background-color: #fff;
         }
 
         .award-gallery img:hover {
-            transform: translateY(-5px); /* 마우스 올렸을 때 살짝 올라가는 효과 */
+            transform: translateY(-8px);
         }
 
         .content-box {
@@ -183,7 +182,9 @@
             font-weight: 700;
         }
 
-        /* 활동 내용 카드 */
+        /* 7. 활동 내용 카드 */
+        #activity { background-color: var(--bg-warm); }
+
         .activity-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -191,7 +192,7 @@
         }
 
         .card {
-            background: var(--primary-color);
+            background: white;
             padding: 40px;
             border-radius: 20px;
             transition: 0.3s;
@@ -199,9 +200,9 @@
         }
 
         .card:hover {
-            background: white;
             border-color: var(--accent-color);
             transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
         .card h3 {
@@ -209,16 +210,14 @@
             color: var(--accent-color);
         }
 
-        /* 연락처 */
+        /* 8. 연락처 */
         #contact {
             background: var(--text-main);
             color: white;
             text-align: center;
         }
 
-        #contact .section-title {
-            color: white;
-        }
+        #contact .section-title { color: white; }
 
         .email-link {
             font-size: 1.5rem;
@@ -226,30 +225,31 @@
             text-decoration: none;
             border-bottom: 2px solid var(--accent-color);
             padding-bottom: 5px;
+            transition: 0.3s;
         }
 
-        /* 푸터 */
+        .email-link:hover { opacity: 0.8; }
+
+        /* 9. 푸터 */
         footer {
             padding: 50px 10%;
             text-align: center;
             font-size: 0.8rem;
             color: #999;
             border-top: 1px solid #eee;
+            background-color: #fff;
         }
 
-        /* 반응형 */
-        @media (max-width: 768px) {
-            #home h1 {
-                font-size: 2.5rem;
-            }
+        /* 10. 반응형 디자인 */
+        @media (max-width: 1024px) {
+            .award-gallery img { max-width: 150px; }
+        }
 
-            .nav-links {
-                display: none;
-            }
-            
-            .award-gallery img {
-                max-width: 45%; /* 모바일에서는 두 개씩 나란히 보이도록 조정 */
-            }
+        @media (max-width: 768px) {
+            #home h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            section { padding: 80px 5%; }
+            .award-gallery img { max-width: 45%; } /* 모바일에서는 2개씩 배치 */
         }
     </style>
 </head>
@@ -283,7 +283,7 @@
 
         <ul class="award-list">
             <li class="award-item">🏆 LG전자 3년 연속 우수봉사단 (2023-2025)</li>
-            <li class="award-item">🏅 제1회 봉사와 나눔 우수사례 공모전 행안부장관상 수상 (2025)</li>
+            <li class="award-item">🏅 행안부장관상 수상 (2025)</li>
             <li class="award-item">⭐ K-자원봉사단리더 선정 (2026)</li>
         </ul>
 
@@ -303,12 +303,12 @@
             </p>
             <p>
                 <span class="highlight">'AI 휴머니즘'</span>을 통해 어르신들의 빛나는 시절을 복원하고,
-                MZ세대와의 진정한 사회적 연결을 회복하는 것이 <span style="display: block; margin-top: 10px;">리아인의 목적입니다.</span>
+                MZ세대와의 진정한 사회적 연결을 회복하는 것이 리아인의 목적입니다.
             </p>
         </div>
     </section>
 
-    <section id="activity" style="background-color: #fffaf0;">
+    <section id="activity">
         <div class="section-title"><span>PROJECT</span>주요 활동 내용</div>
         <div class="activity-grid">
             <div class="card">
@@ -337,5 +337,4 @@
     </footer>
 
 </body>
-
 </html>
