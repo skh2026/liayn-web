@@ -129,22 +129,20 @@
         /* 6. 회사 소개 & 수상 내역 */
         #about { background: white; }
 
-        /* [수정] 텍스트 한 줄 정렬의 기준이 되는 컨테이너 넓이 고정 */
         .award-container {
-            max-width: 920px; /* 세 항목이 여유롭게 한 줄에 들어가도록 최적화된 가로 넓이 */
+            max-width: 920px; 
             margin: 0 auto 3.5rem auto;
             display: flex;
             flex-direction: column;
             gap: 2rem; 
         }
 
-        /* [수정] 무조건 한 줄 배치를 위해 nowrap 적용 및 가운데 정렬 */
         .award-list {
             list-style: none;
             padding: 0;
             margin: 0;
             display: flex;
-            flex-wrap: nowrap; /* 절대 줄바꿈 되지 않도록 설정 */
+            flex-wrap: nowrap; 
             justify-content: center;
             gap: 1rem;
             width: 100%;
@@ -156,14 +154,13 @@
             border-radius: 20px;
             font-size: 0.95rem;
             border: 1px solid #ffe4b5;
-            white-space: nowrap; /* 텍스트 쪼개짐 원천 방지 */
+            white-space: nowrap; 
             flex-shrink: 0;
         }
 
-        /* [수정] 위의 텍스트 가로 시작/끝 라인과 완벽하게 일치하도록 공간 균등 배분 */
         .award-gallery {
             display: flex;
-            justify-content: space-between; /* 양쪽 끝을 딱 맞춤 */
+            justify-content: space-between; 
             align-items: center;
             gap: 1.5rem; 
             width: 100%;
@@ -171,10 +168,9 @@
 
         .award-gallery img {
             display: block;
-            /* 5개의 이미지가 상단 텍스트 넓이에 맞춰 균등하게 채워지도록 설정 */
             flex: 1; 
             width: 100%;
-            max-width: 160px; /* 시원하고 보기 좋은 크기로 상한선 확대 */
+            max-width: 160px; 
             height: auto;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.06);
@@ -186,10 +182,12 @@
             transform: translateY(-5px);
         }
 
+        /* [수정] 단어가 중간에 잘려서 줄바꿈되지 않도록 word-break 속성 추가 */
         .content-box {
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
+            word-break: keep-all; /* 한글 단어가 중간에서 끊기지 않고 통째로 줄바꿈되게 설정 */
         }
 
         .highlight {
@@ -257,9 +255,8 @@
 
         /* 10. 반응형 디자인 */
         @media (max-width: 940px) {
-            /* 화면이 좁아질 때 가로 스크롤이 생기지 않도록 모바일/태블릿용 예외 처리 */
             .award-list {
-                flex-wrap: wrap; /* 모바일 크기에서는 유연하게 줄바꿈 허용 */
+                flex-wrap: wrap; 
             }
             .award-gallery {
                 flex-wrap: wrap;
