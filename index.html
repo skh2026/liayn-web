@@ -158,19 +158,20 @@
             flex-shrink: 0;
         }
 
+        /* [수정] 이미지들이 과도하게 커지지 않도록 가운데 정렬 배치 */
         .award-gallery {
             display: flex;
-            justify-content: space-between; 
+            justify-content: center; 
             align-items: center;
-            gap: 1.5rem; 
+            gap: 1.2rem; 
             width: 100%;
         }
 
+        /* [수정] 이미지 최대 크기를 다시 축소(120px)하여 상단 설명 텍스트 넓이와 균형 감각을 맞춤 */
         .award-gallery img {
             display: block;
-            flex: 1; 
             width: 100%;
-            max-width: 160px; 
+            max-width: 120px; 
             height: auto;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.06);
@@ -182,12 +183,11 @@
             transform: translateY(-5px);
         }
 
-        /* [수정] 단어가 중간에 잘려서 줄바꿈되지 않도록 word-break 속성 추가 */
         .content-box {
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
-            word-break: keep-all; /* 한글 단어가 중간에서 끊기지 않고 통째로 줄바꿈되게 설정 */
+            word-break: keep-all; 
         }
 
         .highlight {
@@ -264,9 +264,8 @@
                 gap: 1rem;
             }
             .award-gallery img {
-                flex: unset;
                 width: 30%;
-                max-width: 110px;
+                max-width: 100px;
             }
         }
 
@@ -324,7 +323,7 @@
         <div class="content-box">
             <p>
                 우리는 급격한 기술 발전 속에서 소외된 어르신들의 <span class="highlight">디지털 소외감</span>에 주목합니다.
-                리아인은 단순한 기술 교육을 넘어, 휴머니즘 관점에서 생성형 AI를 활용해
+                리아인은 단순한 기술 교육을 넘어, <span style="white-space: nowrap;">휴머니즘 관점에서</span> 생성형 AI를 활용해
                 세대 간의 단절을 해결하는 새로운 접근을 시도합니다.
             </p>
             <p>
