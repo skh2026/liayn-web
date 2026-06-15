@@ -151,24 +151,30 @@
         .award-gallery {
             display: flex;
             justify-content: center;
-            align-items: stretch;
-            gap: 15px;
-            flex-wrap: wrap;
-            margin-bottom: 4rem;
+            align-items: center; /* Center vertically if aspects differ slightly */
+            gap: 1rem;            /* Reduced gap to match smaller images */
+            flex-wrap: wrap;      /* Wraps nicely on small screens */
+            margin-bottom: 3rem;  /* Clear spacing before the content box */
+            max-width: 900px;     /* Prevents the row from getting too wide on huge monitors */
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .award-gallery img {
+            display: block;
             width: 100%;
-            max-width: 180px; /* 한 줄에 5장 배치를 위해 너비 조정 */
+            /* Optimized for 5 images at half-size (previous max was 180px) */
+            max-width: 90px;     
             height: auto;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-radius: 8px;   /* Slightly sharper radius for smaller size */
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06); /* Softer shadow for smaller element */
+            object-fit: cover;
             transition: transform 0.3s ease;
             background-color: #fff;
         }
 
         .award-gallery img:hover {
-            transform: translateY(-8px);
+            transform: translateY(-4px); /* Subtler hover effect matching the new size */
         }
 
         .content-box {
