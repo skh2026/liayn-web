@@ -51,15 +51,20 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 5%;
+            padding: 0.8rem 5%;
             border-bottom: 1px solid #eee;
         }
 
-        .logo {
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--accent-color);
-            letter-spacing: -1px;
+        .logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 40px; /* 로고 이미지 높이 적절하게 조절 */
+            width: auto;
+            display: block;
         }
 
         .nav-links a {
@@ -158,30 +163,6 @@
             flex-shrink: 0;
         }
 
-        .award-gallery {
-            display: flex;
-            justify-content: center; 
-            align-items: center;
-            gap: 1.2rem; 
-            width: 100%;
-        }
-
-        .award-gallery img {
-            display: block;
-            width: 100%;
-            max-width: 114px; /* 기존 크기에서 5% 축소 완료 */
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-            transition: transform 0.3s ease;
-            background-color: #fff;
-            cursor: zoom-in; /* 마우스 올리면 돋보기 아이콘 표기 */
-        }
-
-        .award-gallery img:hover {
-            transform: translateY(-5px);
-        }
-
         .content-box {
             max-width: 800px;
             margin: 0 auto;
@@ -192,33 +173,6 @@
         .highlight {
             color: var(--accent-color);
             font-weight: 700;
-        }
-
-        /* 신규 추가: 이미지 클릭 시 커지는 팝업(모달) 스타일 */
-        .image-modal {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            cursor: zoom-out;
-        }
-
-        .image-modal img {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-            border-radius: 6px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
-            transform: scale(0.9);
-            transition: transform 0.2s ease; 
-        }
-
-        .image-modal.active img {
-            transform: scale(1);
         }
 
         /* 7. 활동 내용 카드 */
@@ -284,33 +238,18 @@
             .award-list {
                 flex-wrap: wrap; 
             }
-            .award-gallery {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 1rem;
-            }
-            .award-gallery img {
-                width: 30%;
-                max-width: 95px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .award-gallery img {
-                width: 45%;
-            }
         }
     </style>
 </head>
 
 <body>
 
-    <div id="imageModal" class="image-modal" onclick="closeModal()">
-        <img id="modalImg" src="" alt="확대된 상장 이미지">
-    </div>
-
     <nav>
-        <div class="logo">LIAYN</div>
+        <div class="logo">
+            <a href="#home">
+                <img src="리아인로고_202607.png" alt="LIAYN 로고">
+            </a>
+        </div>
         <div class="nav-links">
             <a href="#home">Home</a>
             <a href="#about">About</a>
@@ -340,14 +279,6 @@
                 <li class="award-item">🏅 행안부장관상 수상 (2025)</li>
                 <li class="award-item">⭐ K-자원봉사단리더 선정 (2026)</li>
             </ul>
-
-            <div class="award-gallery">
-                <img src="images/award1.png" alt="LG전자 우수봉사단 2023">
-                <img src="images/award2.png" alt="LG전자 우수봉사단 2024">
-                <img src="images/award3.png" alt="LG전자 우수봉사단 2025">
-                <img src="images/award4.png" alt="행안부장관상 수상">
-                <img src="images/award5.png" alt="K-자원봉사단리더">
-            </div>
         </div>
 
         <div class="content-box">
@@ -391,28 +322,5 @@
         <p>&copy; 2026 LIAYN. All Rights Reserved. <br> Love Is All You Need - Bridging the Gap with AI Humanism.</p>
     </footer>
 
-    <script>
-        document.querySelectorAll('.award-gallery img').forEach(img => {
-            img.addEventListener('click', function() {
-                const modal = document.getElementById('imageModal');
-                const modalImg = document.getElementById('modalImg');
-                
-                modalImg.src = this.src; 
-                modal.style.display = 'flex'; 
-                
-                setTimeout(() => {
-                    modal.classList.add('active');
-                }, 10);
-            });
-        });
-
-        function closeModal() {
-            const modal = document.getElementById('imageModal');
-            modal.classList.remove('active');
-            setTimeout(() => {
-                modal.style.display = 'none';
-            }, 200); 
-        }
-    </script>
 </body>
 </html>
