@@ -88,7 +88,20 @@
         .nav-links a:hover { color: var(--accent-deep); }
 
         /* 4. 섹션 공통 스타일 */
-        section { padding: 110px 10%; }
+        section { padding: 110px 10% 100px; position: relative; }
+
+        /* 시그니처: 각 섹션을 여는 얇은 그라데이션 리본 */
+        section:not(#home)::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color), var(--pastel-blue));
+            border-radius: 3px;
+            opacity: 0.9;
+        }
 
         .section-title {
             font-size: 1.9rem;
@@ -266,10 +279,15 @@
         }
 
         /* 6. 회사 소개 & 수상 내역 */
-        #about { background: #fff; }
+        #about {
+            background: linear-gradient(180deg, #fff 0%, var(--bg-warm) 100%);
+        }
+
+        /* 7-1. 수상 내역 */
+        #awards { background: #fff; }
 
         .award-container {
-            max-width: 920px; 
+            max-width: 640px; 
             margin: 0 auto 3.5rem auto;
             display: flex;
             flex-direction: column;
@@ -280,31 +298,60 @@
             list-style: none;
             padding: 0;
             margin: 0;
-            display: flex;
-            flex-wrap: nowrap; 
-            justify-content: center;
-            gap: 1rem;
-            width: 100%;
         }
 
         .award-item {
+            display: flex;
+            align-items: baseline;
+            gap: 1.8rem;
+            padding: 22px 20px;
+            border-bottom: 1px solid #ece4d8;
+            border-left: 3px solid transparent;
+            font-size: 1rem;
+            font-weight: 300;
+            transition: 0.3s ease;
+        }
+
+        .award-item:first-child { border-top: 1px solid #ece4d8; }
+
+        .award-item:hover {
             background: var(--bg-warm);
-            padding: 10px 22px;
+            border-left-color: var(--accent-color);
+        }
+
+        .award-year {
+            flex: 0 0 auto;
+            width: fit-content;
+            min-width: 92px;
+            text-align: center;
+            font-family: 'Gowun Dodum', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            color: var(--accent-deep);
+            background: var(--pastel-pink);
+            padding: 5px 12px;
             border-radius: 20px;
-            font-size: 0.95rem;
-            font-weight: 400;
-            border: 1px solid #f2dcc0;
-            white-space: nowrap; 
-            flex-shrink: 0;
+        }
+
+        .award-text {
+            word-break: keep-all;
         }
 
         .content-box {
-            max-width: 760px;
+            max-width: 620px;
             margin: 0 auto;
-            text-align: center;
-            word-break: keep-all; 
-            font-size: 1.05rem;
+            text-align: left;
+            font-size: 1.08rem;
+            line-height: 2.1;
+            letter-spacing: -0.1px;
         }
+
+        .content-box p {
+            word-break: keep-all;
+            margin: 0 0 1.8rem 0;
+        }
+
+        .content-box p:last-child { margin-bottom: 0; }
 
         .highlight {
             color: var(--accent-deep);
@@ -327,7 +374,24 @@
             transition: 0.35s ease;
             border: 1px solid rgba(0,0,0,0.03);
             box-shadow: 0 4px 16px rgba(67, 54, 42, 0.04);
+            position: relative;
+            overflow: hidden;
         }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-deep));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.45s ease;
+        }
+
+        .card:hover::before { transform: scaleX(1); }
 
         .card:hover {
             transform: translateY(-8px);
@@ -342,7 +406,7 @@
 
         /* 8. 연락처 */
         #contact {
-            background: var(--text-main);
+            background: linear-gradient(135deg, #3a2f24 0%, var(--text-main) 55%, #5c3a22 100%);
             color: #fdfaf5;
             text-align: center;
             padding: 65px 10%; /* 다른 섹션보다 낮고 담백하게 */
@@ -392,13 +456,20 @@
 
         /* 11. 반응형 디자인 */
         @media (max-width: 940px) {
-            .award-list {
-                flex-wrap: wrap; 
+            /* award-list는 이미 세로형이라 별도 처리 불필요 */
+        }
+
+        @media (max-width: 560px) {
+            .award-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.4rem;
             }
         }
 
         @media (max-width: 600px) {
             #home h1 { font-size: 2rem; }
+            .content-box br { display: none; }
             .hero-lead { font-size: 1.15rem; }
             .marquee-group img { height: 145px; padding: 7px 7px 20px; }
             .marquee-group { gap: 1.3rem; padding-right: 1.3rem; }
@@ -419,6 +490,7 @@
             <a href="#home">Home</a>
             <a href="#about">About</a>
             <a href="#activity">Activity</a>
+            <a href="#awards">Awards</a>
             <a href="#contact">Contact</a>
         </div>
     </nav>
@@ -465,14 +537,6 @@
             AI 소셜 자원봉사단, 리아인
         </div>
 
-        <div class="award-container reveal">
-            <ul class="award-list">
-                <li class="award-item">🏆 3년 연속 LG전자 사내 우수봉사팀 선정 (2023, 2024, 2025)</li>
-                <li class="award-item">🏅 제1회 대한민국 봉사와 나눔 우수사례 공모전 최우수상 (행안부장관상) (2025)</li>
-                <li class="award-item">⭐ K-자원봉사단리더 선정 (2026)</li>
-            </ul>
-        </div>
-
         <div class="content-box reveal">
             <p>
                 우리는 급격한 기술 발전 속에서 소외된 어르신들의 <span class="highlight">디지털 소외감</span>에 주목합니다.
@@ -499,8 +563,32 @@
             </div>
             <div class="card reveal">
                 <h3>03. 오프라인 전달</h3>
-                <p> 어르신들꼐 AI로 복원된 사진들과 온라인에 모인 MZ세대의 댓글을 모아 전달하여 세대간의 소통을 돕습니다.</p>
+                <p>온라인에 모인 MZ세대의 따뜻한 댓글을 모아 어르신께 직접 전달하여 실질적인 정서적 치유를 돕습니다.</p>
             </div>
+        </div>
+    </section>
+
+    <section id="awards">
+        <div class="section-title reveal">
+            <span>Recognition</span>
+            수상 내역
+        </div>
+
+        <div class="award-container reveal">
+            <ul class="award-list">
+                <li class="award-item">
+                    <span class="award-year">2023–2025</span>
+                    <span class="award-text">3년 연속 LG전자 사내 우수봉사팀 선정</span>
+                </li>
+                <li class="award-item">
+                    <span class="award-year">2025</span>
+                    <span class="award-text">제1회 대한민국 봉사와 나눔 우수사례 공모전 최우수상 (행정안전부장관상)</span>
+                </li>
+                <li class="award-item">
+                    <span class="award-year">2026</span>
+                    <span class="award-text">K-자원봉사단리더 선정</span>
+                </li>
+            </ul>
         </div>
     </section>
 
