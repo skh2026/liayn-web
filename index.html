@@ -5,6 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LIAYN | Love Is All You Need</title>
+
+    <script>
+        // 언어 자동 전환: 저장된 선택이 있으면 그것을 따르고,
+        // 없으면 브라우저 언어 설정을 기준으로 판단합니다.
+        (function () {
+            var pref = localStorage.getItem('liayn_lang');
+            if (pref === 'en') { location.replace('./en.html'); return; }
+            if (pref === 'ko') { return; }
+            var browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+            if (browserLang.indexOf('ko') !== 0) {
+                location.replace('./en.html');
+            }
+        })();
+    </script>
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JJGJZZN1V6"></script>
     <script>
@@ -86,6 +100,40 @@
         }
 
         .nav-links a:hover { color: var(--accent-deep); }
+
+        /* 3-1. 언어 전환 버튼 */
+        .lang-switch {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-left: 2rem;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(67, 54, 42, 0.15);
+            background: rgba(255, 255, 255, 0.6);
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        .lang-switch svg {
+            width: 15px;
+            height: 15px;
+            stroke: currentColor;
+        }
+
+        .lang-switch:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-deep);
+            background: var(--pastel-pink);
+        }
+
+        @media (max-width: 640px) {
+            .lang-switch span.lang-full { display: none; }
+        }
 
         /* 4. 섹션 공통 스타일 */
         section { padding: 110px 10% 100px; position: relative; }
@@ -492,6 +540,13 @@
             <a href="#activity">Activity</a>
             <a href="#awards">Awards</a>
             <a href="#contact">Contact</a>
+            <a href="./en.html" class="lang-switch" aria-label="Switch to English" onclick="localStorage.setItem('liayn_lang','en')">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9z"></path>
+                </svg>
+                <span class="lang-full">EN</span>
+            </a>
         </div>
     </nav>
 
@@ -563,7 +618,7 @@
             </div>
             <div class="card reveal">
                 <h3>03. 오프라인 전달</h3>
-                <p>어르신들께 AI로 복원한 사진들과 온라인에 모인 MZ세대의 따뜻한 댓글을 모아 전달하여 세대간의 소통을 돕습니다.</p>
+                <p>온라인에 모인 MZ세대의 따뜻한 댓글을 모아 어르신께 직접 전달하여 실질적인 정서적 치유를 돕습니다.</p>
             </div>
         </div>
     </section>
