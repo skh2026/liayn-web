@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIAYN | Love Is All You Need</title>
+
+    <script>
+        // Language auto-switch: honor a saved preference if present,
+        // otherwise fall back to the browser's language setting.
+        (function () {
+            var pref = localStorage.getItem('liayn_lang');
+            if (pref === 'ko') { location.replace('./index.html'); return; }
+            if (pref === 'en') { return; }
+            var browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+            if (browserLang.indexOf('ko') === 0) {
+                location.replace('./index.html');
+            }
+        })();
+    </script>
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JJGJZZN1V6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-JJGJZZN1V6');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 1. 디자인 시스템 정의 */
+        :root {
+            --primary-color: #fdfaf5;      /* 따뜻한 아이보리 */
+            --accent-color: #F2AC72;       /* 테마색: 살구빛 주황 */
+            --accent-deep: #cd7c39;        /* 테마색의 짙은 톤 (작은 글자용) */
+            --text-main: #43362a;          /* 테마와 어울리는 따뜻한 밤색 */
+            --text-sub: #94826f;
+            --bg-warm: #faf1e4;
+            --pastel-pink: #fbe3cd;        /* 테마색을 옅게 푼 살구빛 */
+            --pastel-blue: #e4edf5;        /* 살구빛을 받쳐주는 은은한 하늘빛 */
+        }
+
+        /* 2. 기본 레이아웃 */
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; } 
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 300;
+            color: var(--text-main);
+            line-height: 1.8;
+            background-color: var(--primary-color);
+        }
+
+        /* 감성의 뼈대: 제목은 붓으로 쓴 듯한 바탕체 */
+        h1, h2, h3, .section-title {
+            font-family: 'Gowun Dodum', sans-serif;
+            font-weight: 400; /* 고운돋움은 단일 굵기: 크기와 여백으로 위계를 잡음 */
+        }
+
+        /* 3. 네비게이션 */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(253, 250, 245, 0.85);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 5%;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 40px; 
+            width: auto;
+            display: block;
+            mix-blend-mode: multiply; /* 로고의 흰 배경을 지워 nav 배경과 자연스럽게 섞이게 */
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            margin-left: 2rem;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--accent-deep); }
+
+        /* 3-1. 언어 전환 버튼 */
+        .lang-switch {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-left: 2rem;
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid rgba(67, 54, 42, 0.15);
+            background: rgba(255, 255, 255, 0.6);
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.82rem;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+            transition: 0.3s ease;
+        }
+
+        .lang-switch svg {
+            width: 15px;
+            height: 15px;
+            stroke: currentColor;
+        }
+
+        .lang-switch:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-deep);
+            background: var(--pastel-pink);
+        }
+
+        @media (max-width: 640px) {
+            .lang-switch span.lang-full { display: none; }
+        }
+
+        /* 4. 섹션 공통 스타일 */
+        section { padding: 110px 10% 100px; position: relative; }
+
+        /* 시그니처: 각 섹션을 여는 얇은 그라데이션 리본 */
+        section:not(#home)::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color), var(--pastel-blue));
+            border-radius: 3px;
+            opacity: 0.9;
+        }
+
+        .section-title {
+            font-size: 1.9rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            letter-spacing: -0.5px;
+        }
+
+        .section-title span {
+            display: block;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 400;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            color: var(--accent-deep);
+            margin-bottom: 0.8rem;
+        }
+
+        /* 5. 히어로 섹션 */
+        #home {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: var(--primary-color);
+            padding: 130px 0 70px;
+            overflow: hidden;
+        }
+
+        /* 사진 속 파스텔 배경을 닮은, 은은하게 숨쉬는 빛 */
+        #home::before,
+        #home::after {
+            content: '';
+            position: absolute;
+            width: 55vmax;
+            height: 55vmax;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.55;
+            z-index: 0;
+            animation: breathe 12s ease-in-out infinite alternate;
+        }
+
+        #home::before {
+            background: var(--pastel-pink);
+            top: -20%;
+            left: -15%;
+        }
+
+        #home::after {
+            background: var(--pastel-blue);
+            bottom: -25%;
+            right: -15%;
+            animation-delay: -6s;
+        }
+
+        @keyframes breathe {
+            from { transform: scale(1) translate(0, 0); }
+            to   { transform: scale(1.15) translate(3%, 3%); }
+        }
+
+        #home > * { position: relative; z-index: 1; }
+
+        #home h1 {
+            font-size: 2.8rem;
+            margin: 0 0 1.2rem 0;
+            letter-spacing: -0.5px;
+            padding: 0 5%;
+            line-height: 1.3;
+        }
+
+        #home h1 .brand-eyebrow {
+            display: block;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 500;
+            font-size: 1.15rem;
+            letter-spacing: 4px;
+            color: var(--accent-deep);
+            margin-bottom: 14px;
+        }
+
+        #home p {
+            padding: 0 5%;
+        }
+
+        /* 핵심 메시지: 크고 또렷하게 */
+        .hero-lead {
+            font-size: 1.45rem;
+            font-weight: 400;
+            color: var(--text-main);
+            line-height: 1.9;
+            margin: 0 0 1.4rem 0;
+        }
+
+        /* Love Is All You Need: 나지막이 흐르는 한 줄 */
+        .hero-tagline {
+            font-family: 'Gowun Dodum', sans-serif;
+            font-size: 0.95rem;
+            letter-spacing: 3px;
+            color: var(--text-sub);
+            margin: 0 0 2.6rem 0;
+        }
+
+        .btn {
+            padding: 13px 34px;
+            background: var(--accent-color);
+            color: #4a3115;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: 0.35s ease;
+            box-shadow: 0 6px 18px rgba(242, 172, 114, 0.35);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 26px rgba(242, 172, 114, 0.5);
+        }
+
+        /* 5-1. 흐르는 사진 갤러리 — 인화된 사진들이 시간 위를 떠가듯 */
+        .photo-marquee {
+            width: 100%;
+            margin-top: 4.5rem;
+            padding: 24px 0;
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+        }
+
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: flow-right 55s linear infinite;
+            will-change: transform;
+        }
+
+        .marquee-group {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            padding-right: 2rem;
+        }
+
+        /* 사진관에서 갓 인화한 사진처럼: 흰 테두리 + 살짝 기운 각도 */
+        .marquee-group img {
+            height: 200px;
+            width: auto;
+            display: block;
+            padding: 10px 10px 26px;
+            background: #fff;
+            border-radius: 4px;
+            box-shadow: 0 12px 30px rgba(67, 54, 42, 0.12);
+        }
+
+        .marquee-group img:nth-child(4n+1) { transform: rotate(-2deg); }
+        .marquee-group img:nth-child(4n+2) { transform: rotate(1.5deg) translateY(8px); }
+        .marquee-group img:nth-child(4n+3) { transform: rotate(-1deg) translateY(-6px); }
+        .marquee-group img:nth-child(4n+4) { transform: rotate(2deg) translateY(5px); }
+
+        @keyframes flow-right {
+            from { transform: translateX(-50%); }
+            to   { transform: translateX(0); }
+        }
+
+        .photo-marquee:hover .marquee-track {
+            animation-play-state: paused;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .marquee-track, #home::before, #home::after { animation: none; }
+        }
+
+        /* 6. 회사 소개 & 수상 내역 */
+        #about {
+            background: linear-gradient(180deg, #fff 0%, var(--bg-warm) 100%);
+        }
+
+        /* 7-1. 수상 내역 */
+        #awards { background: #fff; }
+
+        .award-container {
+            max-width: 640px; 
+            margin: 0 auto 3.5rem auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem; 
+        }
+
+        .award-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .award-item {
+            display: flex;
+            align-items: baseline;
+            gap: 1.8rem;
+            padding: 22px 20px;
+            border-bottom: 1px solid #ece4d8;
+            border-left: 3px solid transparent;
+            font-size: 1rem;
+            font-weight: 300;
+            transition: 0.3s ease;
+        }
+
+        .award-item:first-child { border-top: 1px solid #ece4d8; }
+
+        .award-item:hover {
+            background: var(--bg-warm);
+            border-left-color: var(--accent-color);
+        }
+
+        .award-year {
+            flex: 0 0 auto;
+            width: fit-content;
+            min-width: 92px;
+            text-align: center;
+            font-family: 'Gowun Dodum', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            color: var(--accent-deep);
+            background: var(--pastel-pink);
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+
+        .award-text {
+            word-break: keep-all;
+        }
+
+        .content-box {
+            max-width: 620px;
+            margin: 0 auto;
+            text-align: left;
+            font-size: 1.08rem;
+            line-height: 2.1;
+            letter-spacing: -0.1px;
+        }
+
+        .content-box p {
+            word-break: keep-all;
+            margin: 0 0 1.8rem 0;
+        }
+
+        .content-box p:last-child { margin-bottom: 0; }
+
+        .highlight {
+            color: var(--accent-deep);
+            font-weight: 500;
+        }
+
+        /* 7. 활동 내용 카드 */
+        #activity { background-color: var(--bg-warm); }
+
+        .activity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 42px 38px;
+            border-radius: 22px;
+            transition: 0.35s ease;
+            border: 1px solid rgba(0,0,0,0.03);
+            box-shadow: 0 4px 16px rgba(67, 54, 42, 0.04);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-color), var(--accent-deep));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.45s ease;
+        }
+
+        .card:hover::before { transform: scaleX(1); }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 16px 36px rgba(67, 54, 42, 0.08);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            font-size: 1.25rem;
+            color: var(--accent-deep);
+        }
+
+        /* 8. 연락처 */
+        #contact {
+            background: linear-gradient(135deg, #3a2f24 0%, var(--text-main) 55%, #5c3a22 100%);
+            color: #fdfaf5;
+            text-align: center;
+            padding: 65px 10%; /* 다른 섹션보다 낮고 담백하게 */
+        }
+
+        #contact .section-title {
+            color: #fdfaf5;
+            margin-bottom: 1.2rem;
+        }
+
+        .email-link {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 5px;
+            transition: 0.3s;
+        }
+
+        .email-link:hover { opacity: 0.8; }
+
+        /* 9. 푸터 */
+        footer {
+            padding: 50px 10%;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #b0a89e;
+            border-top: 1px solid rgba(0,0,0,0.04);
+            background-color: #fff;
+        }
+
+        /* 10. 스크롤에 따라 잔잔하게 떠오르는 효과 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.9s ease, transform 0.9s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+        }
+
+        /* 11. 반응형 디자인 */
+        @media (max-width: 940px) {
+            /* award-list는 이미 세로형이라 별도 처리 불필요 */
+        }
+
+        @media (max-width: 560px) {
+            .award-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.4rem;
+            }
+        }
+
+        @media (max-width: 600px) {
+            #home h1 { font-size: 2rem; }
+            .content-box br { display: none; }
+            .hero-lead { font-size: 1.15rem; }
+            .marquee-group img { height: 145px; padding: 7px 7px 20px; }
+            .marquee-group { gap: 1.3rem; padding-right: 1.3rem; }
+            .photo-marquee { margin-top: 3.2rem; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">
+            <a href="#home">
+                <img src="./images/logo.png" alt="LIAYN logo">
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#activity">Activity</a>
+            <a href="#awards">Awards</a>
+            <a href="#contact">Contact</a>
+            <a href="./index.html" class="lang-switch" aria-label="한국어로 보기" onclick="localStorage.setItem('liayn_lang','ko')">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="9"></circle>
+                    <path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9z"></path>
+                </svg>
+                <span class="lang-full">KO</span>
+            </a>
+        </div>
+    </nav>
+
+    <section id="home">
+        <h1>
+            <span class="brand-eyebrow">LIAYN</span>
+            AI-Powered Volunteer Group for Social Good
+        </h1>
+        <p class="hero-lead">Breaking down generational barriers with AI, <br>connecting people across time.</p>
+        <p class="hero-tagline">Love Is All You Need</p>
+        <a href="#about" class="btn">See Our Story</a>
+
+        <!-- 흐르는 사진 갤러리 -->
+        <div class="photo-marquee">
+            <div class="marquee-track">
+                <div class="marquee-group">
+                    <img src="./images/photo1.jpg" alt="">
+                    <img src="./images/photo2.jpg" alt="">
+                    <img src="./images/photo3.jpg" alt="">
+                    <img src="./images/photo4.jpg" alt="">
+                    <img src="./images/photo1.jpg" alt="">
+                    <img src="./images/photo2.jpg" alt="">
+                    <img src="./images/photo3.jpg" alt="">
+                    <img src="./images/photo4.jpg" alt="">
+                </div>
+                <div class="marquee-group" aria-hidden="true">
+                    <img src="./images/photo1.jpg" alt="">
+                    <img src="./images/photo2.jpg" alt="">
+                    <img src="./images/photo3.jpg" alt="">
+                    <img src="./images/photo4.jpg" alt="">
+                    <img src="./images/photo1.jpg" alt="">
+                    <img src="./images/photo2.jpg" alt="">
+                    <img src="./images/photo3.jpg" alt="">
+                    <img src="./images/photo4.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="section-title reveal">
+            <span>Since 2023. 04</span>
+            LIAYN, an AI-Powered Volunteer Group for Social Good
+        </div>
+
+        <div class="content-box reveal">
+            <p>
+                We focus on the <span class="highlight">digital alienation</span> felt by elderly people left behind
+                amid rapid technological change. Going beyond simple tech education, LIAYN takes a
+                <span style="white-space: nowrap;">human-centered approach</span> to generative AI,
+                exploring new ways to bridge the generational divide.
+            </p>
+            <p>
+                Through <span class="highlight">"AI Humanism,"</span> we restore the brightest moments of our elders' lives. <br>
+                <span style="display: inline-block;">Our goal is to rebuild genuine social connection between them and the MZ generation.</span>
+            </p>
+        </div>
+    </section>
+
+    <section id="activity">
+        <div class="section-title reveal"><span>PROJECT</span>What We Do</div>
+        <div class="activity-grid">
+            <div class="card reveal">
+                <h3>01. Memory Content</h3>
+                <p>We use generative AI to restore our elders' past alongside their present, turning them into short-form videos and stories for the MZ generation.</p>
+            </div>
+            <div class="card reveal">
+                <h3>02. Spontaneous Empathy</h3>
+                <p>Through social media hashtag campaigns, we spark cross-generational empathy and invite people to join in with words of support.</p>
+            </div>
+            <div class="card reveal">
+                <h3>03. Offline Delivery</h3>
+                <p>We gather the warm comments left online by the MZ generation and deliver them directly to our elders, offering real emotional comfort.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="awards">
+        <div class="section-title reveal">
+            <span>Recognition</span>
+            Awards
+        </div>
+
+        <div class="award-container reveal">
+            <ul class="award-list">
+                <li class="award-item">
+                    <span class="award-year">2023–2025</span>
+                    <span class="award-text">Selected as LG Electronics' Outstanding In-House Volunteer Team, 3 years running</span>
+                </li>
+                <li class="award-item">
+                    <span class="award-year">2025</span>
+                    <span class="award-text">Grand Prize, 1st Korea Volunteer &amp; Sharing Best Practice Awards (Minister of the Interior and Safety Award)</span>
+                </li>
+                <li class="award-item">
+                    <span class="award-year">2026</span>
+                    <span class="award-text">Selected as a K-Volunteer Team Leader</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-title reveal">Want to Change the World With Us?</div>
+        <p class="reveal" style="margin-bottom: 1.6rem; opacity: 0.8;">For business inquiries or collaboration proposals, please reach out to the email below.</p>
+        <a href="mailto:hong@liayn.kr" class="email-link">hong@liayn.kr</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 LIAYN. All Rights Reserved. <br> Love Is All You Need - Bridging the Gap with AI Humanism.</p>
+    </footer>
+
+    <script>
+        // 스크롤에 따라 콘텐츠가 잔잔하게 떠오르는 효과
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
+
+</body>
+</html>
