@@ -14,16 +14,19 @@
         gtag('config', 'G-JJGJZZN1V6');
     </script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
     
     <style>
         /* 1. 디자인 시스템 정의 */
         :root {
-            --primary-color: #f8f9fa; 
-            --accent-color: #ff8e71;  
-            --text-main: #333;
-            --text-sub: #666;
-            --bg-warm: #fffaf0;       
+            --primary-color: #fdfaf5;      /* 따뜻한 아이보리 */
+            --accent-color: #F2AC72;       /* 테마색: 살구빛 주황 */
+            --accent-deep: #cd7c39;        /* 테마색의 짙은 톤 (작은 글자용) */
+            --text-main: #43362a;          /* 테마와 어울리는 따뜻한 밤색 */
+            --text-sub: #94826f;
+            --bg-warm: #faf1e4;
+            --pastel-pink: #fbe3cd;        /* 테마색을 옅게 푼 살구빛 */
+            --pastel-blue: #e4edf5;        /* 살구빛을 받쳐주는 은은한 하늘빛 */
         }
 
         /* 2. 기본 레이아웃 */
@@ -34,9 +37,16 @@
             margin: 0;
             padding: 0;
             font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 300;
             color: var(--text-main);
-            line-height: 1.6;
+            line-height: 1.8;
             background-color: var(--primary-color);
+        }
+
+        /* 감성의 뼈대: 제목은 붓으로 쓴 듯한 바탕체 */
+        h1, h2, h3, .section-title {
+            font-family: 'Gowun Dodum', sans-serif;
+            font-weight: 400; /* 고운돋움은 단일 굵기: 크기와 여백으로 위계를 잡음 */
         }
 
         /* 3. 네비게이션 */
@@ -44,14 +54,14 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(5px);
+            background: rgba(253, 250, 245, 0.85);
+            backdrop-filter: blur(8px);
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0.8rem 5%;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
         }
 
         .logo a {
@@ -74,64 +84,188 @@
             transition: 0.3s;
         }
 
-        .nav-links a:hover { color: var(--accent-color); }
+        .nav-links a:hover { color: var(--accent-deep); }
 
         /* 4. 섹션 공통 스타일 */
-        section { padding: 100px 10%; }
+        section { padding: 110px 10%; }
 
         .section-title {
-            font-size: 2rem;
+            font-size: 1.9rem;
             margin-bottom: 3rem;
             text-align: center;
+            letter-spacing: -0.5px;
         }
 
         .section-title span {
             display: block;
-            font-size: 1rem;
-            color: var(--accent-color);
-            margin-bottom: 0.5rem;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 400;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            color: var(--accent-deep);
+            margin-bottom: 0.8rem;
         }
 
         /* 5. 히어로 섹션 */
         #home {
-            height: 100vh;
+            position: relative;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: linear-gradient(135deg, #fff 0%, #fffaf0 100%);
+            background: var(--primary-color);
+            padding: 130px 0 70px;
+            overflow: hidden;
         }
 
+        /* 사진 속 파스텔 배경을 닮은, 은은하게 숨쉬는 빛 */
+        #home::before,
+        #home::after {
+            content: '';
+            position: absolute;
+            width: 55vmax;
+            height: 55vmax;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.55;
+            z-index: 0;
+            animation: breathe 12s ease-in-out infinite alternate;
+        }
+
+        #home::before {
+            background: var(--pastel-pink);
+            top: -20%;
+            left: -15%;
+        }
+
+        #home::after {
+            background: var(--pastel-blue);
+            bottom: -25%;
+            right: -15%;
+            animation-delay: -6s;
+        }
+
+        @keyframes breathe {
+            from { transform: scale(1) translate(0, 0); }
+            to   { transform: scale(1.15) translate(3%, 3%); }
+        }
+
+        #home > * { position: relative; z-index: 1; }
+
         #home h1 {
-            font-size: 3.25rem; 
-            margin: 0 0 1rem 0;
-            letter-spacing: -2px;
+            font-size: 2.8rem;
+            margin: 0 0 1.2rem 0;
+            letter-spacing: -0.5px;
+            padding: 0 5%;
+            line-height: 1.3;
+        }
+
+        #home h1 .brand-eyebrow {
+            display: block;
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 500;
+            font-size: 1.15rem;
+            letter-spacing: 4px;
+            color: var(--accent-deep);
+            margin-bottom: 14px;
         }
 
         #home p {
-            font-size: 1.2rem;
+            padding: 0 5%;
+        }
+
+        /* 핵심 메시지: 크고 또렷하게 */
+        .hero-lead {
+            font-size: 1.45rem;
+            font-weight: 400;
+            color: var(--text-main);
+            line-height: 1.9;
+            margin: 0 0 1.4rem 0;
+        }
+
+        /* Love Is All You Need: 나지막이 흐르는 한 줄 */
+        .hero-tagline {
+            font-family: 'Gowun Dodum', sans-serif;
+            font-size: 0.95rem;
+            letter-spacing: 3px;
             color: var(--text-sub);
-            margin-bottom: 2rem;
+            margin: 0 0 2.6rem 0;
         }
 
         .btn {
-            padding: 12px 30px;
+            padding: 13px 34px;
             background: var(--accent-color);
-            color: white;
+            color: #4a3115;
             text-decoration: none;
             border-radius: 50px;
-            font-weight: bold;
-            transition: 0.3s;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: 0.35s ease;
+            box-shadow: 0 6px 18px rgba(242, 172, 114, 0.35);
         }
 
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 142, 113, 0.3);
+            box-shadow: 0 12px 26px rgba(242, 172, 114, 0.5);
+        }
+
+        /* 5-1. 흐르는 사진 갤러리 — 인화된 사진들이 시간 위를 떠가듯 */
+        .photo-marquee {
+            width: 100%;
+            margin-top: 4.5rem;
+            padding: 24px 0;
+            overflow: hidden;
+            -webkit-mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 12%, black 88%, transparent);
+        }
+
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: flow-right 55s linear infinite;
+            will-change: transform;
+        }
+
+        .marquee-group {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            padding-right: 2rem;
+        }
+
+        /* 사진관에서 갓 인화한 사진처럼: 흰 테두리 + 살짝 기운 각도 */
+        .marquee-group img {
+            height: 200px;
+            width: auto;
+            display: block;
+            padding: 10px 10px 26px;
+            background: #fff;
+            border-radius: 4px;
+            box-shadow: 0 12px 30px rgba(67, 54, 42, 0.12);
+        }
+
+        .marquee-group img:nth-child(4n+1) { transform: rotate(-2deg); }
+        .marquee-group img:nth-child(4n+2) { transform: rotate(1.5deg) translateY(8px); }
+        .marquee-group img:nth-child(4n+3) { transform: rotate(-1deg) translateY(-6px); }
+        .marquee-group img:nth-child(4n+4) { transform: rotate(2deg) translateY(5px); }
+
+        @keyframes flow-right {
+            from { transform: translateX(-50%); }
+            to   { transform: translateX(0); }
+        }
+
+        .photo-marquee:hover .marquee-track {
+            animation-play-state: paused;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .marquee-track, #home::before, #home::after { animation: none; }
         }
 
         /* 6. 회사 소개 & 수상 내역 */
-        #about { background: white; }
+        #about { background: #fff; }
 
         .award-container {
             max-width: 920px; 
@@ -157,21 +291,23 @@
             padding: 10px 22px;
             border-radius: 20px;
             font-size: 0.95rem;
-            border: 1px solid #ffe4b5;
+            font-weight: 400;
+            border: 1px solid #f2dcc0;
             white-space: nowrap; 
             flex-shrink: 0;
         }
 
         .content-box {
-            max-width: 800px;
+            max-width: 760px;
             margin: 0 auto;
             text-align: center;
             word-break: keep-all; 
+            font-size: 1.05rem;
         }
 
         .highlight {
-            color: var(--accent-color);
-            font-weight: 700;
+            color: var(--accent-deep);
+            font-weight: 500;
         }
 
         /* 7. 활동 내용 카드 */
@@ -185,31 +321,36 @@
 
         .card {
             background: white;
-            padding: 40px;
-            border-radius: 20px;
-            transition: 0.3s;
-            border: 1px solid #eee;
+            padding: 42px 38px;
+            border-radius: 22px;
+            transition: 0.35s ease;
+            border: 1px solid rgba(0,0,0,0.03);
+            box-shadow: 0 4px 16px rgba(67, 54, 42, 0.04);
         }
 
         .card:hover {
-            border-color: var(--accent-color);
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transform: translateY(-8px);
+            box-shadow: 0 16px 36px rgba(67, 54, 42, 0.08);
         }
 
         .card h3 {
             margin-top: 0;
-            color: var(--accent-color);
+            font-size: 1.25rem;
+            color: var(--accent-deep);
         }
 
         /* 8. 연락처 */
         #contact {
             background: var(--text-main);
-            color: white;
+            color: #fdfaf5;
             text-align: center;
+            padding: 65px 10%; /* 다른 섹션보다 낮고 담백하게 */
         }
 
-        #contact .section-title { color: white; }
+        #contact .section-title {
+            color: #fdfaf5;
+            margin-bottom: 1.2rem;
+        }
 
         .email-link {
             font-size: 1.5rem;
@@ -227,16 +368,40 @@
             padding: 50px 10%;
             text-align: center;
             font-size: 0.8rem;
-            color: #999;
-            border-top: 1px solid #eee;
+            color: #b0a89e;
+            border-top: 1px solid rgba(0,0,0,0.04);
             background-color: #fff;
         }
 
-        /* 10. 반응형 디자인 */
+        /* 10. 스크롤에 따라 잔잔하게 떠오르는 효과 */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.9s ease, transform 0.9s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+        }
+
+        /* 11. 반응형 디자인 */
         @media (max-width: 940px) {
             .award-list {
                 flex-wrap: wrap; 
             }
+        }
+
+        @media (max-width: 600px) {
+            #home h1 { font-size: 2rem; }
+            .hero-lead { font-size: 1.15rem; }
+            .marquee-group img { height: 145px; padding: 7px 7px 20px; }
+            .marquee-group { gap: 1.3rem; padding-right: 1.3rem; }
+            .photo-marquee { margin-top: 3.2rem; }
         }
     </style>
 </head>
@@ -259,20 +424,47 @@
 
     <section id="home">
         <h1>
-            <span style="display: block; font-weight: 700; font-size: 1.45rem; color: var(--accent-color); margin-bottom: 10px;">리아인 LIAYN</span>
-            Love Is All You Need
+            <span class="brand-eyebrow">리아인 LIAYN</span>
+            AI 기반 소셜 자원봉사단
         </h1>
-        <p>AI 기술로 세대 간의 벽을 허물고, <br>시간을 뛰어넘어 사람들을 연결합니다.</p>
+        <p class="hero-lead">AI 기술로 세대 간의 벽을 허물고, <br>시간을 뛰어넘어 사람들을 연결합니다.</p>
+        <p class="hero-tagline">Love Is All You Need</p>
         <a href="#about" class="btn">우리의 이야기 보기</a>
+
+        <!-- 흐르는 사진 갤러리 -->
+        <div class="photo-marquee">
+            <div class="marquee-track">
+                <div class="marquee-group">
+                    <img src="./images/그림1.jpg" alt="">
+                    <img src="./images/그림2.jpg" alt="">
+                    <img src="./images/그림3.jpg" alt="">
+                    <img src="./images/그림4.jpg" alt="">
+                    <img src="./images/그림1.jpg" alt="">
+                    <img src="./images/그림2.jpg" alt="">
+                    <img src="./images/그림3.jpg" alt="">
+                    <img src="./images/그림4.jpg" alt="">
+                </div>
+                <div class="marquee-group" aria-hidden="true">
+                    <img src="./images/그림1.jpg" alt="">
+                    <img src="./images/그림2.jpg" alt="">
+                    <img src="./images/그림3.jpg" alt="">
+                    <img src="./images/그림4.jpg" alt="">
+                    <img src="./images/그림1.jpg" alt="">
+                    <img src="./images/그림2.jpg" alt="">
+                    <img src="./images/그림3.jpg" alt="">
+                    <img src="./images/그림4.jpg" alt="">
+                </div>
+            </div>
+        </div>
     </section>
 
     <section id="about">
-        <div class="section-title">
+        <div class="section-title reveal">
             <span>Since 2023. 04</span>
-            AI 기반 자원봉사단, 리아인
+            AI 소셜 자원봉사단, 리아인
         </div>
 
-        <div class="award-container">
+        <div class="award-container reveal">
             <ul class="award-list">
                 <li class="award-item">🏆 LG전자 3년 연속 우수봉사단 (2023-2025)</li>
                 <li class="award-item">🏅 행안부장관상 수상 (2025)</li>
@@ -280,7 +472,7 @@
             </ul>
         </div>
 
-        <div class="content-box">
+        <div class="content-box reveal">
             <p>
                 우리는 급격한 기술 발전 속에서 소외된 어르신들의 <span class="highlight">디지털 소외감</span>에 주목합니다.
                 리아인은 단순한 기술 교육을 넘어, <span style="white-space: nowrap;">휴머니즘 관점에서</span> 생성형 AI를 활용해
@@ -294,17 +486,17 @@
     </section>
 
     <section id="activity">
-        <div class="section-title"><span>PROJECT</span>주요 활동 내용</div>
+        <div class="section-title reveal"><span>PROJECT</span>주요 활동 내용</div>
         <div class="activity-grid">
-            <div class="card">
+            <div class="card reveal">
                 <h3>01. 추억 콘텐츠</h3>
                 <p>생성형 AI로 복원한 어르신의 과거와 현재를 MZ세대가 즐길 수 있는 숏폼 및 스토리 콘텐츠로 제작합니다.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
                 <h3>02. 자발적 공감</h3>
                 <p>SNS 해시태그 캠페인을 통해 세대 간 공감을 유도하고 응원 참여를 이끌어냅니다.</p>
             </div>
-            <div class="card">
+            <div class="card reveal">
                 <h3>03. 오프라인 전달</h3>
                 <p>온라인에 모인 MZ세대의 따뜻한 댓글을 모아 어르신께 직접 전달하여 실질적인 정서적 치유를 돕습니다.</p>
             </div>
@@ -312,14 +504,28 @@
     </section>
 
     <section id="contact">
-        <div class="section-title">함께 세상을 바꾸고 싶다면</div>
-        <p style="margin-bottom: 2rem; opacity: 0.8;">비즈니스 문의 및 협업 제안은 아래 메일로 연락주세요.</p>
+        <div class="section-title reveal">함께 세상을 바꾸고 싶다면</div>
+        <p class="reveal" style="margin-bottom: 1.6rem; opacity: 0.8;">비즈니스 문의 및 협업 제안은 아래 메일로 연락주세요.</p>
         <a href="mailto:hong@liayn.kr" class="email-link">hong@liayn.kr</a>
     </section>
 
     <footer>
         <p>&copy; 2026 LIAYN. All Rights Reserved. <br> Love Is All You Need - Bridging the Gap with AI Humanism.</p>
     </footer>
+
+    <script>
+        // 스크롤에 따라 콘텐츠가 잔잔하게 떠오르는 효과
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
 
 </body>
 </html>
