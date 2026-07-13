@@ -216,6 +216,21 @@
 
         #home > * { position: relative; z-index: 1; }
 
+        /* 히어로 배경 워터마크: 로고 심볼을 크고 연하게 */
+        #home > .hero-mark {
+            position: absolute;
+            top: 48%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(85vw, 980px);
+            height: auto;
+            aspect-ratio: 1 / 1;
+            opacity: 0.06;
+            z-index: 0;
+            pointer-events: none;
+            user-select: none;
+        }
+
         #home h1 {
             font-size: 2.8rem;
             margin: 0 0 1.2rem 0;
@@ -552,6 +567,7 @@
     </nav>
 
     <section id="home">
+        <img class="hero-mark" src="./images/logo-mark.png" alt="" aria-hidden="true">
         <h1>
             <span class="brand-eyebrow">리아인 LIAYN</span>
             AI 기반 소셜 자원봉사단
