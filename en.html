@@ -91,6 +91,11 @@
             mix-blend-mode: multiply; /* 로고의 흰 배경을 지워 nav 배경과 자연스럽게 섞이게 */
         }
 
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
         .nav-links a {
             text-decoration: none;
             color: var(--text-main);
@@ -100,6 +105,11 @@
         }
 
         .nav-links a:hover { color: var(--accent-deep); }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+        }
 
         .social-link svg {
             width: 19px;
