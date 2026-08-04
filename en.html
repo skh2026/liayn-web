@@ -101,6 +101,13 @@
 
         .nav-links a:hover { color: var(--accent-deep); }
 
+        .social-link svg {
+            width: 19px;
+            height: 19px;
+            stroke: currentColor;
+            display: block;
+        }
+
         /* 3-1. 언어 전환 버튼 */
         .lang-switch {
             display: inline-flex;
@@ -541,6 +548,13 @@
             <a href="#activity">Activity</a>
             <a href="#awards">Awards</a>
             <a href="#contact">Contact</a>
+            <a href="https://www.instagram.com/liayn.2023" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+                    <circle cx="12" cy="12" r="4"></circle>
+                    <circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"></circle>
+                </svg>
+            </a>
             <a href="./index.html" class="lang-switch" aria-label="한국어로 보기" onclick="localStorage.setItem('liayn_lang','ko')">
                 <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="9"></circle>
