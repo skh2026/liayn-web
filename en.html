@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- 1. 한글 검색어 인덱싱을 위한 Title 설정 -->
-    <title>LIAYN (리아인) | Love Is All You Need</title>
+    <!-- Title -->
+    <title>LIAYN | Love Is All You Need</title>
 
-    <!-- 2. 구글 SEO용 구조화 데이터 (도메인 liayn.kr 적용 완료) -->
+    <!-- Google SEO Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -112,18 +112,6 @@
         }
 
         .nav-links a:hover { color: var(--accent-deep); }
-
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .social-link svg {
-            width: 19px;
-            height: 19px;
-            stroke: currentColor;
-            display: block;
-        }
 
         .lang-switch {
             display: inline-flex;
@@ -343,6 +331,59 @@
             background: linear-gradient(180deg, #fff 0%, var(--bg-warm) 100%);
         }
 
+        /* Story Section Card Style */
+        #story { background: #fff; }
+        .story-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .story-card {
+            background: var(--primary-color);
+            border-radius: 20px;
+            padding: 35px;
+            border: 1px solid #ece4d8;
+            transition: 0.35s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            box-shadow: 0 4px 20px rgba(67, 54, 42, 0.03);
+        }
+        .story-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(67, 54, 42, 0.08);
+            border-color: var(--accent-color);
+        }
+        .story-badge {
+            display: inline-block;
+            background: var(--pastel-pink);
+            color: var(--accent-deep);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+        .story-card h3 {
+            font-size: 1.4rem;
+            margin: 0 0 12px 0;
+            line-height: 1.4;
+            color: var(--text-main);
+        }
+        .story-card p {
+            font-size: 0.98rem;
+            color: var(--text-sub);
+            margin: 0 0 20px 0;
+            line-height: 1.6;
+        }
+        .story-meta {
+            font-size: 0.85rem;
+            color: var(--accent-deep);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
         #awards { background: #fff; }
 
         .award-container {
@@ -396,11 +437,11 @@
         .award-text { word-break: keep-all; }
 
         .content-box {
-            max-width: 620px;
+            max-width: 640px;
             margin: 0 auto;
             text-align: left;
-            font-size: 1.08rem;
-            line-height: 2.1;
+            font-size: 1.05rem;
+            line-height: 1.95;
             letter-spacing: -0.1px;
         }
 
@@ -465,7 +506,7 @@
             background: linear-gradient(135deg, #3a2f24 0%, var(--text-main) 55%, #5c3a22 100%);
             color: #fdfaf5;
             text-align: center;
-            padding: 65px 10%;
+            padding: 75px 10%;
         }
 
         #contact .section-title {
@@ -523,6 +564,7 @@
             .marquee-group img { height: 145px; padding: 7px 7px 20px; }
             .marquee-group { gap: 1.3rem; padding-right: 1.3rem; }
             .photo-marquee { margin-top: 3.2rem; }
+            .story-card { padding: 24px; }
         }
     </style>
 </head>
@@ -538,16 +580,10 @@
         <div class="nav-links">
             <a href="#home">Home</a>
             <a href="#about">About</a>
+            <a href="#story">Story</a>
             <a href="#activity">Activity</a>
             <a href="#awards">Awards</a>
             <a href="#contact">Contact</a>
-            <a href="https://www.instagram.com/liayn.2023" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-                    <circle cx="12" cy="12" r="4"></circle>
-                    <circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"></circle>
-                </svg>
-            </a>
             <a href="./index.html" class="lang-switch" aria-label="See in Korean" onclick="localStorage.setItem('liayn_lang','ko')">
                 <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="9"></circle>
@@ -596,37 +632,51 @@
     <section id="about">
         <div class="section-title reveal">
             <span>Since April 2023</span>
-            LIAYN, an AI-Powered Volunteer Group for Social Good
+            LIAYN: K-Volunteer Group Driven by AI Humanism
         </div>
 
         <div class="content-box reveal">
             <p>
-                We focus on the <span class="highlight">digital alienation</span> felt by elderly people left behind
-                amid rapid technological change. Going beyond simple tech education, LIAYN takes a
-                <span style="white-space: nowrap;">human-centered approach</span> to generative AI,
-                exploring new ways to bridge the generational divide.
+                While AI tools have seamlessly integrated into the daily lives of Gen Z and Millennials, the story is very different for South Korea’s older generations—the very people who built the nation's industrial foundation. For those aged 65 and older, the rapid pace of tech adoption creates deep <span class="highlight">digital isolation</span> and widens the social gap between generations.
             </p>
             <p>
-                Through <span class="highlight">"AI Humanism,"</span> we restore the brightest moments of our elders' lives. <br>
-                <span style="display: inline-block;">Our goal is to rebuild genuine social connection between them and Gen Z/Millennials.</span>
+                Bridging this gap requires more than just teaching seniors how to use tech. It calls for a fundamentally human-centered approach to technology. LIAYN leverages generative AI to restore our elders' most cherished youth memories—practicing <span class="highlight">"AI Humanism"</span> to uphold human dignity, inspire self-confidence, and rebuild meaningful social connections across generations.
             </p>
         </div>
     </section>
 
+    <!-- Story Preview Section -->
+    <section id="story">
+        <div class="section-title reveal">
+            <span>INSIGHT & STORY</span>
+            Stories From LIAYN
+        </div>
+        <div class="story-container reveal">
+            <a href="./story-post.html" class="story-card">
+                <span class="story-badge">Feature Article</span>
+                <h3>Generative AI & The Generational Divide — What 30 Years of Data Tell Us, and How LIAYN Bridges the Gap</h3>
+                <p>A whitepaper article examining the evolution of technological divides from Digital Divide 1.0 (1995) to AI Divide 2.0 (2026), and LIAYN's human-centered AI solution.</p>
+                <div class="story-meta">
+                    Read Full Article &rarr;
+                </div>
+            </a>
+        </div>
+    </section>
+
     <section id="activity">
-        <div class="section-title reveal"><span>PROJECT</span>What We Do</div>
+        <div class="section-title reveal"><span>PROJECT</span>Our 3-Step Action Model</div>
         <div class="activity-grid">
             <div class="card reveal">
-                <h3>01. Memory Content</h3>
-                <p>We use generative AI to restore our elders' past alongside their present, turning them into short-form videos and stories for younger generations.</p>
+                <h3>01. Memory Restoration Content</h3>
+                <p>We leverage generative AI to bring our elders' past youth back to life alongside their present selves. These story posts and short-form videos are published at least four times a month across our digital channels.</p>
             </div>
             <div class="card reveal">
-                <h3>02. Spontaneous Empathy</h3>
-                <p>Through social media hashtag campaigns, we spark cross-generational empathy and invite people to join in with words of support.</p>
+                <h3>02. Spontaneous Social Engagement</h3>
+                <p>Through targeted hashtag campaigns, we invite younger generations to connect with these stories, driving genuine engagement with a goal of over 100 supportive comments and interactions monthly.</p>
             </div>
             <div class="card reveal">
-                <h3>03. Offline Delivery</h3>
-                <p>We gather warm online comments left by younger generations and deliver them directly to our elders, offering real emotional comfort.</p>
+                <h3>03. Offline Emotional Delivery</h3>
+                <p>We collect warm online messages left by younger users, print them, and deliver them directly to our elders in person (targeting 20+ recipients)—turning online empathy into real-world comfort and intergenerational conversation.</p>
             </div>
         </div>
     </section>
@@ -655,10 +705,18 @@
         </div>
     </section>
 
+    <!-- Updated Contact Section for Volunteers & Collaborations -->
     <section id="contact">
-        <div class="section-title reveal">Want to Change the World With Us?</div>
-        <p class="reveal" style="margin-bottom: 1.6rem; opacity: 0.8;">For business inquiries or collaboration proposals, please reach out to us via email below.</p>
-        <a href="mailto:hong@liayn.kr" class="email-link">hong@liayn.kr</a>
+        <div class="section-title reveal">Join Us in Creating a Warmer World Through AI</div>
+        <p class="reveal" style="margin-bottom: 2rem; opacity: 0.9; max-width: 680px; margin-left: auto; margin-right: auto; word-break: keep-all; line-height: 1.8;">
+            Whether you are looking to join as a <strong>volunteer</strong> to restore precious moments for our elders,<br>
+            or interested in a <strong>collaboration or partnership proposal</strong> to build a sustainable digital inclusion welfare network—<br>
+            we welcome you to join LIAYN in bridging the generational divide.
+        </p>
+        
+        <div class="reveal" style="display: flex; justify-content: center; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 1.5rem;">
+            <a href="mailto:hong@liayn.kr" class="email-link">hong@liayn.kr</a>
+        </div>
     </section>
 
     <footer>
@@ -677,6 +735,13 @@
 
         document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
     </script>
+
+    <script
+        src="https://volunteer-chatbot.vercel.app/widget.js"
+        data-org-name="LIAYN Volunteer Group"
+        data-quick-questions="What activities do you do?|How can I participate?|Who can join as a volunteer?"
+        defer
+    ></script>
 
 </body>
 </html>
