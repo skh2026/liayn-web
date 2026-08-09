@@ -1,20 +1,11 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>리아인 (LIAYN) | Love Is All You Need</title>
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "리아인",
-      "alternateName": ["LIAYN", "liayn", "Liayn"],
-      "url": "https://liayn.kr"
-    }
-    </script>
-    
+    <title>LIAYN | Love Is All You Need</title>
+
     <script>
         (function () {
             var pref = localStorage.getItem('liayn_lang');
@@ -109,18 +100,6 @@
 
         .nav-links a:hover { color: var(--accent-deep); }
 
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .social-link svg {
-            width: 19px;
-            height: 19px;
-            stroke: currentColor;
-            display: block;
-        }
-
         .lang-switch {
             display: inline-flex;
             align-items: center;
@@ -148,6 +127,10 @@
             border-color: var(--accent-color);
             color: var(--accent-deep);
             background: var(--pastel-pink);
+        }
+
+        @media (max-width: 640px) {
+            .lang-switch span.lang-full { display: none; }
         }
 
         section { padding: 110px 10% 100px; position: relative; }
@@ -323,6 +306,12 @@
             to   { transform: translateX(0); }
         }
 
+        .photo-marquee:hover .marquee-track { animation-play-state: paused; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .marquee-track, #home::before, #home::after { animation: none; }
+        }
+
         #about { background: linear-gradient(180deg, #fff 0%, var(--bg-warm) 100%); }
 
         /* Story 섹션 카드 스타일 */
@@ -415,6 +404,7 @@
             transform: translateY(-8px);
             box-shadow: 0 16px 36px rgba(67, 54, 42, 0.08);
         }
+
         .card h3 {
             margin-top: 0;
             font-size: 1.25rem;
@@ -450,6 +440,7 @@
         }
 
         .award-item:first-child { border-top: 1px solid #ece4d8; }
+
         .award-item:hover {
             background: var(--bg-warm);
             border-left-color: var(--accent-color);
@@ -484,6 +475,8 @@
             margin: 0 0 1.8rem 0;
         }
 
+        .content-box p:last-child { margin-bottom: 0; }
+
         .highlight {
             color: var(--accent-deep);
             font-weight: 500;
@@ -493,7 +486,7 @@
             background: linear-gradient(135deg, #3a2f24 0%, var(--text-main) 55%, #5c3a22 100%);
             color: #fdfaf5;
             text-align: center;
-            padding: 65px 10%;
+            padding: 75px 10%;
         }
 
         #contact .section-title {
@@ -532,6 +525,10 @@
             transform: translateY(0);
         }
 
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { opacity: 1; transform: none; transition: none; }
+        }
+
         @media (max-width: 560px) {
             .award-item {
                 flex-direction: column;
@@ -567,13 +564,7 @@
             <a href="#activity">Activity</a>
             <a href="#awards">Awards</a>
             <a href="#contact">Contact</a>
-            <a href="https://www.instagram.com/liayn.2023" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
-                <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-                    <circle cx="12" cy="12" r="4"></circle>
-                    <circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"></circle>
-                </svg>
-            </a>
+            <!-- 영문 버전으로 언어 스위치 -->
             <a href="./en.html" class="lang-switch" aria-label="Switch to English" onclick="localStorage.setItem('liayn_lang','en')">
                 <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="9"></circle>
@@ -638,7 +629,7 @@
         </div>
     </section>
 
-    <!-- 신설된 Story 프리뷰 섹션 -->
+    <!-- Story 프리뷰 섹션 -->
     <section id="story">
         <div class="section-title reveal">
             <span>INSIGHT & STORY</span>
@@ -661,15 +652,15 @@
         <div class="activity-grid">
             <div class="card reveal">
                 <h3>01. 추억 콘텐츠</h3>
-                <p>생성형 AI로 복원한 어르신의 과거와 현재를 MZ세대가 즐길 수 있는 숏폼 및 스토리 콘텐츠로 제작합니다. (월 4건 이상 인스타그램 업로드)</p>
+                <p>생성형 AI로 복원한 어르신의 과거와 현재를 MZ세대가 즐길 수 있는 숏폼 및 스토리 콘텐츠로 가공하여 온라인 SNS 채널에 월 4건 이상 업로드합니다.</p>
             </div>
             <div class="card reveal">
                 <h3>02. 자발적 공감</h3>
-                <p>SNS 해시태그 캠페인을 통해 세대 간 공감을 유도하고 자발적인 응원 참여를 이끌어냅니다. (월 100건 이상 달성)</p>
+                <p>해시태그 캠페인을 통해 세대 간 공감을 유도하고, 온라인 플랫폼에서 자발적인 '좋아요'와 응원 참여를 월 100건 이상 달성합니다.</p>
             </div>
             <div class="card reveal">
                 <h3>03. 오프라인 전달</h3>
-                <p>온라인에 모인 MZ세대의 따뜻한 댓글을 모아 어르신께 직접 전달하여 실질적인 정서적 치유를 돕습니다. (총 20명 이상 전달 목표)</p>
+                <p>온라인 플랫폼에 모인 MZ세대의 따뜻한 댓글을 모아 어르신께 직접 전달하여 실질적인 정서적 치유와 세대 간 대화를 돕습니다. (총 20명 이상 진행 목표)</p>
             </div>
         </div>
     </section>
@@ -700,7 +691,7 @@
 
     <section id="contact">
         <div class="section-title reveal">AI로 따뜻한 세상을 함께 만들어갈 여러분을 기다립니다</div>
-        <p class="reveal" style="margin-bottom: 1.8rem; opacity: 0.9; max-width: 680px; margin-left: auto; margin-right: auto; word-break: keep-all; line-height: 1.8;">
+        <p class="reveal" style="margin-bottom: 2rem; opacity: 0.9; max-width: 680px; margin-left: auto; margin-right: auto; word-break: keep-all; line-height: 1.8;">
             어르신들의 빛나는 순간을 함께 복원할 <strong>봉사자 참여</strong>부터,<br>
             지속 가능한 디지털 포용 복지망을 구축할 <strong>기업·기관 협업 제안</strong>까지.<br>
             세대 간의 틈을 메우는 리아인(LIAYN)의 여정에 마음을 보태주세요.
