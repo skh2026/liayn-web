@@ -4,11 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIAYN | Love Is All You Need</title>
+    
+    <!-- 1. 한글 검색어 인덱싱을 위한 Title 설정 -->
+    <title>LIAYN (리아인) | Love Is All You Need</title>
+
+    <!-- 2. 구글 SEO용 구조화 데이터 (도메인 liayn.kr 적용 완료) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "리아인",
+      "alternateName": ["LIAYN", "liayn", "Liayn"],
+      "url": "https://liayn.kr"
+    }
+    </script>
 
     <script>
-        // Language auto-switch: honor a saved preference if present,
-        // otherwise fall back to the browser's language setting.
         (function () {
             var pref = localStorage.getItem('liayn_lang');
             if (pref === 'ko') { location.replace('./index.html'); return; }
@@ -31,19 +42,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* 1. 디자인 시스템 정의 */
         :root {
-            --primary-color: #fdfaf5;      /* 따뜻한 아이보리 */
-            --accent-color: #F2AC72;       /* 테마색: 살구빛 주황 */
-            --accent-deep: #cd7c39;        /* 테마색의 짙은 톤 (작은 글자용) */
-            --text-main: #43362a;          /* 테마와 어울리는 따뜻한 밤색 */
+            --primary-color: #fdfaf5;
+            --accent-color: #F2AC72;
+            --accent-deep: #cd7c39;
+            --text-main: #43362a;
             --text-sub: #94826f;
             --bg-warm: #faf1e4;
-            --pastel-pink: #fbe3cd;        /* 테마색을 옅게 푼 살구빛 */
-            --pastel-blue: #e4edf5;        /* 살구빛을 받쳐주는 은은한 하늘빛 */
+            --pastel-pink: #fbe3cd;
+            --pastel-blue: #e4edf5;
         }
 
-        /* 2. 기본 레이아웃 */
         * { box-sizing: border-box; }
         html { scroll-behavior: smooth; } 
 
@@ -57,13 +66,11 @@
             background-color: var(--primary-color);
         }
 
-        /* 제목도 본문과 같은 서체로 통일 (굵기와 크기로 위계를 잡음) */
         h1, h2, h3, .section-title {
             font-family: 'Inter', sans-serif;
             font-weight: 700;
         }
 
-        /* 3. 네비게이션 */
         nav {
             position: fixed;
             top: 0;
@@ -88,7 +95,7 @@
             height: 40px; 
             width: auto;
             display: block;
-            mix-blend-mode: multiply; /* 로고의 흰 배경을 지워 nav 배경과 자연스럽게 섞이게 */
+            mix-blend-mode: multiply;
         }
 
         .nav-links {
@@ -118,7 +125,6 @@
             display: block;
         }
 
-        /* 3-1. 언어 전환 버튼 */
         .lang-switch {
             display: inline-flex;
             align-items: center;
@@ -152,10 +158,8 @@
             .lang-switch span.lang-full { display: none; }
         }
 
-        /* 4. 섹션 공통 스타일 */
         section { padding: 110px 10% 100px; position: relative; }
 
-        /* 시그니처: 각 섹션을 여는 얇은 그라데이션 리본 */
         section:not(#home)::before {
             content: '';
             position: absolute;
@@ -185,7 +189,6 @@
             margin-bottom: 0.8rem;
         }
 
-        /* 5. 히어로 섹션 */
         #home {
             position: relative;
             min-height: 100vh;
@@ -199,7 +202,6 @@
             overflow: hidden;
         }
 
-        /* 사진 속 파스텔 배경을 닮은, 은은하게 숨쉬는 빛 */
         #home::before,
         #home::after {
             content: '';
@@ -251,11 +253,8 @@
             margin-bottom: 14px;
         }
 
-        #home p {
-            padding: 0 5%;
-        }
+        #home p { padding: 0 5%; }
 
-        /* 핵심 메시지: 크고 또렷하게 */
         .hero-lead {
             font-size: 1.45rem;
             font-weight: 400;
@@ -264,7 +263,6 @@
             margin: 0 0 1.4rem 0;
         }
 
-        /* Love Is All You Need: 나지막이 흐르는 한 줄 */
         .hero-tagline {
             font-family: 'Inter', sans-serif;
             font-size: 0.95rem;
@@ -290,7 +288,6 @@
             box-shadow: 0 12px 26px rgba(242, 172, 114, 0.5);
         }
 
-        /* 5-1. 흐르는 사진 갤러리 — 인화된 사진들이 시간 위를 떠가듯 */
         .photo-marquee {
             width: 100%;
             margin-top: 4.5rem;
@@ -314,7 +311,6 @@
             padding-right: 2rem;
         }
 
-        /* 사진관에서 갓 인화한 사진처럼: 흰 테두리 + 살짝 기운 각도 */
         .marquee-group img {
             height: 200px;
             width: auto;
@@ -343,12 +339,10 @@
             .marquee-track, #home::before, #home::after { animation: none; }
         }
 
-        /* 6. 회사 소개 & 수상 내역 */
         #about {
             background: linear-gradient(180deg, #fff 0%, var(--bg-warm) 100%);
         }
 
-        /* 7-1. 수상 내역 */
         #awards { background: #fff; }
 
         .award-container {
@@ -399,9 +393,7 @@
             border-radius: 20px;
         }
 
-        .award-text {
-            word-break: keep-all;
-        }
+        .award-text { word-break: keep-all; }
 
         .content-box {
             max-width: 620px;
@@ -424,7 +416,6 @@
             font-weight: 500;
         }
 
-        /* 7. 활동 내용 카드 */
         #activity { background-color: var(--bg-warm); }
 
         .activity-grid {
@@ -470,12 +461,11 @@
             color: var(--accent-deep);
         }
 
-        /* 8. 연락처 */
         #contact {
             background: linear-gradient(135deg, #3a2f24 0%, var(--text-main) 55%, #5c3a22 100%);
             color: #fdfaf5;
             text-align: center;
-            padding: 65px 10%; /* 다른 섹션보다 낮고 담백하게 */
+            padding: 65px 10%;
         }
 
         #contact .section-title {
@@ -494,7 +484,6 @@
 
         .email-link:hover { opacity: 0.8; }
 
-        /* 9. 푸터 */
         footer {
             padding: 50px 10%;
             text-align: center;
@@ -504,7 +493,6 @@
             background-color: #fff;
         }
 
-        /* 10. 스크롤에 따라 잔잔하게 떠오르는 효과 */
         .reveal {
             opacity: 0;
             transform: translateY(28px);
@@ -518,11 +506,6 @@
 
         @media (prefers-reduced-motion: reduce) {
             .reveal { opacity: 1; transform: none; transition: none; }
-        }
-
-        /* 11. 반응형 디자인 */
-        @media (max-width: 940px) {
-            /* award-list는 이미 세로형이라 별도 처리 불필요 */
         }
 
         @media (max-width: 560px) {
@@ -565,7 +548,7 @@
                     <circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"></circle>
                 </svg>
             </a>
-            <a href="./index.html" class="lang-switch" aria-label="한국어로 보기" onclick="localStorage.setItem('liayn_lang','ko')">
+            <a href="./index.html" class="lang-switch" aria-label="See in Korean" onclick="localStorage.setItem('liayn_lang','ko')">
                 <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="9"></circle>
                     <path d="M3 12h18M12 3c2.5 2.6 3.8 5.7 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.7-3.8-9s1.3-6.4 3.8-9z"></path>
@@ -584,7 +567,6 @@
         <p class="hero-tagline">Love Is All You Need</p>
         <a href="#about" class="btn">See Our Story</a>
 
-        <!-- 흐르는 사진 갤러리 -->
         <div class="photo-marquee">
             <div class="marquee-track">
                 <div class="marquee-group">
@@ -613,7 +595,7 @@
 
     <section id="about">
         <div class="section-title reveal">
-            <span>Since 2023. 04</span>
+            <span>Since April 2023</span>
             LIAYN, an AI-Powered Volunteer Group for Social Good
         </div>
 
@@ -626,7 +608,7 @@
             </p>
             <p>
                 Through <span class="highlight">"AI Humanism,"</span> we restore the brightest moments of our elders' lives. <br>
-                <span style="display: inline-block;">Our goal is to rebuild genuine social connection between them and the MZ generation.</span>
+                <span style="display: inline-block;">Our goal is to rebuild genuine social connection between them and Gen Z/Millennials.</span>
             </p>
         </div>
     </section>
@@ -636,7 +618,7 @@
         <div class="activity-grid">
             <div class="card reveal">
                 <h3>01. Memory Content</h3>
-                <p>We use generative AI to restore our elders' past alongside their present, turning them into short-form videos and stories for the MZ generation.</p>
+                <p>We use generative AI to restore our elders' past alongside their present, turning them into short-form videos and stories for younger generations.</p>
             </div>
             <div class="card reveal">
                 <h3>02. Spontaneous Empathy</h3>
@@ -644,7 +626,7 @@
             </div>
             <div class="card reveal">
                 <h3>03. Offline Delivery</h3>
-                <p>We gather the warm comments left online by the MZ generation and deliver them directly to our elders, offering real emotional comfort.</p>
+                <p>We gather warm online comments left by younger generations and deliver them directly to our elders, offering real emotional comfort.</p>
             </div>
         </div>
     </section>
@@ -659,7 +641,7 @@
             <ul class="award-list">
                 <li class="award-item">
                     <span class="award-year">2023–2025</span>
-                    <span class="award-text">Selected as LG Electronics' Outstanding In-House Volunteer Team, 3 years running</span>
+                    <span class="award-text">Selected as LG Electronics' Outstanding In-House Volunteer Team (3 Consecutive Years)</span>
                 </li>
                 <li class="award-item">
                     <span class="award-year">2025</span>
@@ -675,7 +657,7 @@
 
     <section id="contact">
         <div class="section-title reveal">Want to Change the World With Us?</div>
-        <p class="reveal" style="margin-bottom: 1.6rem; opacity: 0.8;">For business inquiries or collaboration proposals, please reach out to the email below.</p>
+        <p class="reveal" style="margin-bottom: 1.6rem; opacity: 0.8;">For business inquiries or collaboration proposals, please reach out to us via email below.</p>
         <a href="mailto:hong@liayn.kr" class="email-link">hong@liayn.kr</a>
     </section>
 
@@ -684,7 +666,6 @@
     </footer>
 
     <script>
-        // 스크롤에 따라 콘텐츠가 잔잔하게 떠오르는 효과
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
