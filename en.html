@@ -4,11 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Title -->
     <title>LIAYN | Love Is All You Need</title>
 
-    <!-- Google SEO Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -319,19 +316,14 @@
             to   { transform: translateX(0); }
         }
 
-        .photo-marquee:hover .marquee-track {
-            animation-play-state: paused;
-        }
+        .photo-marquee:hover .marquee-track { animation-play-state: paused; }
 
         @media (prefers-reduced-motion: reduce) {
             .marquee-track, #home::before, #home::after { animation: none; }
         }
 
-        #about {
-            background: linear-gradient(180deg, #fff 0%, var(--bg-warm) 100%);
-        }
+        #about { background: linear-gradient(180deg, #fff 0%, var(--bg-warm) 100%); }
 
-        /* Story Section Card Style */
         #story { background: #fff; }
         .story-container {
             max-width: 800px;
@@ -413,7 +405,6 @@
         }
 
         .award-item:first-child { border-top: 1px solid #ece4d8; }
-
         .award-item:hover {
             background: var(--bg-warm);
             border-left-color: var(--accent-color);
@@ -490,7 +481,6 @@
         }
 
         .card:hover::before { transform: scaleX(1); }
-
         .card:hover {
             transform: translateY(-8px);
             box-shadow: 0 16px 36px rgba(67, 54, 42, 0.08);
@@ -584,6 +574,7 @@
             <a href="#activity">Activity</a>
             <a href="#awards">Awards</a>
             <a href="#contact">Contact</a>
+            <!-- 한국어 버전으로 언어 스위치 -->
             <a href="./index.html" class="lang-switch" aria-label="See in Korean" onclick="localStorage.setItem('liayn_lang','ko')">
                 <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="9"></circle>
@@ -645,14 +636,15 @@
         </div>
     </section>
 
-    <!-- Story Preview Section -->
+    <!-- 영문 Story 프리뷰 섹션 -->
     <section id="story">
         <div class="section-title reveal">
             <span>INSIGHT & STORY</span>
             Stories From LIAYN
         </div>
         <div class="story-container reveal">
-            <a href="./story-post.html" class="story-card">
+            <!-- 영문 포스팅(story-post_en.html) 링크 연결 -->
+            <a href="./story-post_en.html" class="story-card">
                 <span class="story-badge">Feature Article</span>
                 <h3>Generative AI & The Generational Divide — What 30 Years of Data Tell Us, and How LIAYN Bridges the Gap</h3>
                 <p>A whitepaper article examining the evolution of technological divides from Digital Divide 1.0 (1995) to AI Divide 2.0 (2026), and LIAYN's human-centered AI solution.</p>
@@ -705,7 +697,6 @@
         </div>
     </section>
 
-    <!-- Updated Contact Section for Volunteers & Collaborations -->
     <section id="contact">
         <div class="section-title reveal">Join Us in Creating a Warmer World Through AI</div>
         <p class="reveal" style="margin-bottom: 2rem; opacity: 0.9; max-width: 680px; margin-left: auto; margin-right: auto; word-break: keep-all; line-height: 1.8;">
